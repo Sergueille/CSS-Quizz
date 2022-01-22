@@ -126,6 +126,10 @@ button > img {
     width: 100%;
 }
 
+.page.bg > p {
+    margin-top: 5px;
+}
+
 .fade {
     overflow: hidden;
     animation: 500ms fade cubic-bezier(0, 0.41, 0.29, 1);
