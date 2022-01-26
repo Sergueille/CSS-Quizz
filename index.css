@@ -12,6 +12,7 @@
 
     font-family: arial;
     margin: 0;
+    user-select: none; 
 }
 
 body {
