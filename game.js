@@ -121,6 +121,7 @@ const wrongColor = "#900";
 // Temps maximum
 const maxTime = 30;
 
+let canAnswer = true;
 let currentQuestion = null; // Question actuellement utilisée
 let time = 0; // Temps restant, utiliser SetTime() au lieu d'assigner
 let answerId = 0; // Id de la réponse dans la liste de réponse mélangée
@@ -160,24 +161,30 @@ function NewQuestion(){
 		if (correctAns === currentQuestion.ans[i])
 			answerId = i;
 	}
+
+	canAnswer = true;
 }
 
 // Enevnt: le joueur a choidi une réponse
 function SubmitAnswer(id) {
-	total++;
-	currentQuestion.used = true;
-	
-	if (id === answerId){
-		totalCorrect++;
+	if (canAnswer)
+	{
+		total++;
+		currentQuestion.used = true;
+		
+		if (id === answerId){
+			totalCorrect++;
+		}
+		else{
+			ans[id].style.backgroundColor = wrongColor;
+		}
+		
+		ans[answerId].style.backgroundColor = correctColor;
+		scoreText.innerHTML = Math.round(totalCorrect * totalCorrect * (totalCorrect / total) * 10);
+		
+		canAnswer = false;
+		setTimeout(NewQuestion, 1000);
 	}
-	else{
-		ans[id].style.backgroundColor = wrongColor;
-	}
-	
-	ans[answerId].style.backgroundColor = correctColor;
-	scoreText.innerHTML = Math.round(totalCorrect * totalCorrect * (totalCorrect / total) * 10);
-	
-	setTimeout(NewQuestion, 1000);
 }
 
 // Affiche le temps
