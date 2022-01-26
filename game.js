@@ -106,6 +106,11 @@ const questions = [
         "A la hauteur de la police de caractère", "A la distance entre l'élément et le haut de l'écran"],
 		used: false,
 	},
+	{
+		question: "Quelle propriété permet de changer la police?",
+		ans: ["font-family", "font", "font-style", "font-name"],
+		used: false,
+	}
 ]
 
 // Couleurs
